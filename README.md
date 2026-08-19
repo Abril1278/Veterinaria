@@ -24,8 +24,15 @@ El programa permite hacer lo siguiente:
 
 El sistema se encarga de verificar que el peso sea mayor que 0, que no se registren más de 10 controles y que no se consulten o modifiquen posiciones que todavía no hayan sido utilizadas.
 
+# Modelo Vista Controlador
 
-# Clases
+El programa utilizará el modelo vista controlador para separar las diferentes partes del programa.
+
+- Modelo: La clase Mascota será el modelo, porque es la que guarda la información de la mascota y los controles de peso.
+- Vista: La clase Vista será la encargada de interactuar con el usuario, mostrar el menú, pedir los datos y mostrar los resultados.
+- Controlador: La clase Controlador será la encargada de comunicar la Vista con la clase Mascota y realizar las acciones dependiendo de lo que seleccione el usuario.
+
+# Modelo
 
 ## Clase Mascota
 
@@ -39,33 +46,34 @@ Esta clase almacena la información básica de la mascota y administra sus contr
 
 #### nombre
 
-- Tipo: string
-- Privado
-- Propósito: Almacena el nombre de la mascota.
+* Tipo: string
+* Privado
+* Propósito: Almacena el nombre de la mascota.
 
 #### especie
 
-- Tipo: enum
-- Privado
-- Propósito Almacena la especie de la mascota.
+* Tipo: enum
+* Privado
+* Propósito Almacena la especie de la mascota.
 
 #### edad
 
-- Tipo: float
-- Privado
-* **Propósito:** Almacena la edad de la mascota.
+* Tipo: float
+* Privado
+
+- **Propósito:** Almacena la edad de la mascota.
 
 #### peso
 
-- Tipo: double[]
-- Privado
-- Proposito: almacenar el peso de las mascotas, con un máximo de 10 posiciones
+* Tipo: double[]
+* Privado
+* Proposito: almacenar el peso de las mascotas, con un máximo de 10 posiciones
 
 #### cantidadControles
 
-- Tipo: int
-- Privado
-- Proposito: Lleva el registro de cuántos controles de peso han sido almacenados. También permite identificar cuál es la siguiente posición disponible dentro del arreglo.
+* Tipo: int
+* Privado
+* Proposito: Lleva el registro de cuántos controles de peso han sido almacenados. También permite identificar cuál es la siguiente posición disponible dentro del arreglo.
 
 ### Constructor
 
@@ -158,34 +166,156 @@ Devuelve la edad de la mascota.
 
 ---
 
-## Clase Main
+# Vista
+
+## Clase Vista
 
 ### Propósito
 
-La clase Main es el driver program del sistema, es decir que el Main es el que va a interactuar con el usuario, el que muestra el menú, el que podrá solicitar los datos que se necesitan y usat los metodos de la clase Mascota
+La clase Vista es la encargada de interactuar con el usuario, mostrar el menú, pedir los datos que se necesitan y mostrar los resultados.
 
 ### Atributos
 
 #### scanner
 
-- Tipo: scanner
-- Proposito: Lee los datos que ingrea el usuario
+ Será el que lee los datos ingresados por el usuario
+
+### Métodos
+
+#### mostrarMenu()
+
+Muestra al usuario todas las opciones que puede realizar en el programa y obtiene la opción que seleccione.
+
+---
+
+#### pedirNombre()
+
+Pide al usuario el nombre de la mascota.
+
+---
+
+#### pedirEspecie()
+
+Pide al usuario la especie de la mascota.
+
+---
+
+#### pedirEdad()
+
+Pide al usuario la edad de la mascota.
+
+---
+
+#### pedirPeso()
+
+Pide al usuario el peso de la mascota.
+
+---
+
+#### pedirNumeroControl()
+
+Pide al usuario el número de control que quiere consultar o modificar.
+
+---
+
+#### mostrarMensaje()
+
+Muestra al usuario los mensajes o resultados del programa.
+
+---
+
+# Controlador
+
+## Clase Controlador
+
+### Propósito
+
+La clase Controlador es la encargada de comunicar la Vista con el Modelo. Recibe lo que el usuario selecciona en la Vista y utiliza los metodos de Mascota para realizar lo que se necesite.
+
+### Atributos
 
 #### mascota
 
-- Tipo mascota
+- Tipo: Mascota
+- Privado
 - Proposito: Guarda la mascota que está siendo usada en ese momento en el programa.
+
+#### vista
+
+Permite utilizar la Vista para pedir datos y mostrar información al usuario.
+
+### Métodos
+
+#### ejecutar()
+
+Este es el encargado de:
+
+* Mostrar el menú utilizando la Vista.
+* Recibir la opción que seleccione el usuario.
+* Realizar la acción dependiendo de la opción seleccionada.
+* Utilizar los métodos de Mascota cuando se necesiten.
+* Repetir el menú hasta que el usuario quiera salir.
+
+---
+
+#### crearMascota()
+
+Obtiene los datos de la mascota utilizando la Vista y crea una nueva mascota.
+
+---
+
+#### registrarControl()
+
+Obtiene el peso utilizando la Vista y utiliza Mascota para registrar el nuevo control.
+
+---
+
+#### consultarHistorial()
+
+Obtiene los pesos que se han guardado de la mascota y los muestra al usuario.
+
+---
+
+#### consultarControl()
+
+Obtiene el número de control que quiere consultar el usuario y muestra el peso que se guardó en ese control.
+
+---
+
+#### modificarPeso()
+
+Obtiene el número de control y el nuevo peso que ingresa el usuario y utiliza Mascota para modificar el peso.
+
+---
+
+#### mostrarPromedio()
+
+Utiliza Mascota para calcular el promedio de los pesos guardados y muestra el resultado al usuario.
+
+---
+
+#### mostrarPesoMayorMenor()
+
+Utiliza Mascota para obtener el peso mayor y el peso menor y muestra los resultados al usuario.
+
+---
+
+#### mostrarControlesDisponibles()
+
+Obtiene la cantidad de controles que se han registrado y los que todavía están disponibles y los muestra al usuario.
+
+# Clase Main
+
+### Propósito
+
+La clase Main es el driver program del sistema y es donde comienza la ejecución del programa.
 
 ### Métodos
 
 #### main(String[] args)
 
-Este es el encargado de: 
+Este es el encargado de:
 
-* Crear el Scanner.
-* Pedir los datos de la mascota.
-* Crear el objeto Mascota.
-* Mostrar el menú de opciones.
-* Leer la opción que el usuario seleccione.
-* Llamar a los métodos de Mascota dependiendo de la opción seleccionada.
-* Repetir el menú hasta que el usuario quiera salir.
+- Crear la Vista.
+- Crear el Controlador.
+- Iniciar el programa utilizando el Controlador.
