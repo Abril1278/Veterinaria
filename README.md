@@ -250,11 +250,11 @@ Permite utilizar la Vista para pedir datos y mostrar información al usuario.
 
 Este es el encargado de:
 
-* Mostrar el menú utilizando la Vista.
-* Recibir la opción que seleccione el usuario.
-* Realizar la acción dependiendo de la opción seleccionada.
-* Utilizar los métodos de Mascota cuando se necesiten.
-* Repetir el menú hasta que el usuario quiera salir.
+- Mostrar el menú utilizando la Vista.
+- Recibir la opción que seleccione el usuario.
+- Realizar la acción dependiendo de la opción seleccionada.
+- Utilizar los métodos de Mascota cuando se necesiten.
+- Repetir el menú hasta que el usuario quiera salir.
 
 ---
 
