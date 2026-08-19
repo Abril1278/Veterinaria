@@ -61,207 +61,131 @@ Esta clase almacena la información básica de la mascota y administra sus contr
 - Privado
 - Proposito: almacenar el peso de las mascotas, con un máximo de 10 posiciones
 
-#### `cantidadControles`
+#### cantidadControles
 
-* **Tipo:** `int`
-* **Visibilidad:** `private`
-* **Propósito:** Lleva el registro de cuántos controles de peso han sido almacenados. También permite identificar cuál es la siguiente posición disponible dentro del arreglo.
+- Tipo: int
+- Privado
+- Proposito: Lleva el registro de cuántos controles de peso han sido almacenados. También permite identificar cuál es la siguiente posición disponible dentro del arreglo.
 
 ### Constructor
 
-#### `Mascota(String nombre, String especie, int edad)`
+#### Mascota(String nombre, String especie, int edad)
 
 Crea una nueva mascota utilizando su nombre, especie y edad.
 
 Al crear una mascota:
 
-* Se crea un arreglo con espacio para 10 pesos.
-* `cantidadControles` comienza en `0`, debido a que la mascota todavía no posee controles registrados.
+- Se crea un arreglo con espacio para 10 pesos.
+- cantidadControles comienza en 0, porque la mascota todavía no posee controles que se hayan guardado.
 
 ### Métodos
 
-#### `registrarPeso(double peso)`
+#### registrarPeso(double peso)
 
 Registra un nuevo control de peso en la siguiente posición disponible del arreglo.
 
-Antes de almacenarlo verifica que:
+Antes de guardarlo verifica que:
 
-* El peso sea mayor que `0`.
-* Exista espacio disponible en el arreglo.
+- El peso sea mayor que 0.
+- Aun haya espacio en el arreglo, porque maximo son 10 espacios.
 
-Después de registrar correctamente el peso, aumenta `cantidadControles`.
-
----
-
-#### `consultarPeso(int numeroControl)`
-
-Permite obtener el peso correspondiente a un control específico.
-
-Recibe el número del control que se desea consultar y verifica que dicho control haya sido registrado antes de acceder al arreglo.
+Después de registrar el peso, aumenta cantidadControles.
 
 ---
 
-#### `modificarPeso(int numeroControl, double nuevoPeso)`
+#### consultarPeso(int numeroControl)
 
-Permite cambiar el peso almacenado en un control existente.
+Permite obtener el peso de la mascota de un control en especifico.
+
+Recibe el número del control que se desea consultar y verifica que ese control haya sido registrado antes de usar el arreglo.
+
+---
+
+#### modificarPeso(int numeroControl, double nuevoPeso)
+
+Permite que se cambie el peso que se guardo antes.
 
 Verifica que:
 
-* El número de control corresponda a un control registrado.
-* El nuevo peso sea mayor que `0`.
+- El número de control corresponda a un control que si exista.
+- El nuevo peso sea mayor que 0.
 
 ---
 
-#### `calcularPromedio()`
+#### calcularPromedio()
 
-Calcula el promedio de los pesos registrados.
+Calcula el promedio de todos los pesos guardados
 
-El método recorre únicamente las posiciones utilizadas del arreglo, desde la posición `0` hasta `cantidadControles - 1`.
-
----
-
-#### `obtenerPesoMayor()`
-
-Recorre los controles registrados y determina cuál es el peso más alto almacenado.
+El método recorre únicamente las posiciones utilizadas del arreglo, desde la posición 0 hasta cantidadControles - 1.
 
 ---
 
-#### `obtenerPesoMenor()`
+#### obtenerPesoMayor()
 
-Recorre los controles registrados y determina cuál es el peso más bajo almacenado.
-
----
-
-#### `getCantidadControles()`
-
-Devuelve la cantidad de controles de peso que han sido registrados.
+Recorre los controles que se han guardado y busca cuál es el peso más alto que se haya guardado.
 
 ---
 
-#### `getControlesDisponibles()`
+#### obtenerPesoMenor()
 
-Calcula y devuelve cuántos controles todavía pueden registrarse.
-
-El resultado se puede obtener mediante:
-
-`10 - cantidadControles`
+Recorre los controles que se guardaron antes y busca cuál es el peso más bajo que se haya guardado.
 
 ---
 
-#### `getNombre()`
+#### getCantidadControles()
+
+Devuelve la cantidad de controles de peso que han sido guardado.
+
+---
+
+#### getControlesDisponibles()
+
+Calcula y devuelve cuántos controles todavía se pueden guardar.
+
+---
+
+#### getNombre()
 
 Devuelve el nombre de la mascota.
 
-#### `getEspecie()`
+#### getEspecie()
 
 Devuelve la especie de la mascota.
 
-#### `getEdad()`
+#### getEdad()
 
 Devuelve la edad de la mascota.
 
 ---
 
-## Clase `Main`
+## Clase Main
 
 ### Propósito
 
-La clase `Main` funciona como el **driver program** del sistema.
+La clase Main es el driver program del sistema, es decir que el Main es el que va a interactuar con el usuario, el que muestra el menú, el que podrá solicitar los datos que se necesitan y usat los metodos de la clase Mascota
 
-Es responsable de interactuar con el usuario, mostrar el menú principal, solicitar los datos necesarios y utilizar los métodos de la clase `Mascota`.
+### Atributos
 
-### Atributos posibles
+#### scanner
 
-#### `scanner`
+- Tipo: scanner
+- Proposito: Lee los datos que ingrea el usuario
 
-* **Tipo:** `Scanner`
-* **Visibilidad:** `private static`
-* **Propósito:** Permite leer la información ingresada por el usuario desde la consola.
+#### mascota
 
-#### `mascota`
-
-* **Tipo:** `Mascota`
-* **Visibilidad:** `private static`
-* **Propósito:** Mantiene una referencia a la mascota que se encuentra activa actualmente en el sistema.
+- Tipo mascota
+- Proposito: Guarda la mascota que está siendo usada en ese momento en el programa.
 
 ### Métodos
 
-#### `main(String[] args)`
+#### main(String[] args)
 
-Es el punto de inicio del programa.
+Este es el encargado de: 
 
-Se encarga de:
-
-* Mostrar el menú.
-* Leer la opción seleccionada por el usuario.
-* Ejecutar la operación correspondiente.
-* Mantener el programa funcionando hasta seleccionar la opción de salir.
-
-### Métodos auxiliares posibles
-
-Para mantener organizado el programa, el menú puede dividirse en métodos auxiliares como:
-
-* `crearMascota()`
-* `registrarControl()`
-* `mostrarHistorial()`
-* `consultarControl()`
-* `modificarPeso()`
-* `mostrarPromedio()`
-* `mostrarMayorMenor()`
-* `mostrarControlesDisponibles()`
-
-Estos métodos se encargan principalmente de la interacción con el usuario y utilizan los métodos correspondientes del objeto `Mascota`.
-
----
-
-# Uso del arreglo
-
-Los controles de peso se almacenan en el atributo:
-
-`double[] pesos = new double[10];`
-
-El arreglo tiene una capacidad fija de 10 posiciones.
-
-La variable `cantidadControles` indica cuántas posiciones han sido utilizadas y permite determinar la siguiente posición disponible.
-
-Por ejemplo, si:
-
-`cantidadControles = 3`
-
-significa que las posiciones utilizadas son:
-
-`pesos[0]`
-`pesos[1]`
-`pesos[2]`
-
-y la siguiente posición disponible es:
-
-`pesos[3]`
-
-De esta manera, para recorrer únicamente los controles registrados se recorren las posiciones desde `0` hasta `cantidadControles - 1`.
-
----
-
-# Encapsulamiento
-
-Los atributos de la clase `Mascota` se declaran como `private` para evitar que otras clases puedan modificarlos directamente.
-
-Las operaciones sobre los controles de peso se realizan mediante métodos `public`, permitiendo controlar y validar los cambios realizados sobre los datos.
-
-De esta manera se aplica el principio de **encapsulamiento** de la programación orientada a objetos.
-
----
-
-# Estructura general
-
-```text
-Main
- └── Mascota
-      ├── nombre : String
-      ├── especie : String
-      ├── edad : int
-      ├── pesos : double[]
-      └── cantidadControles : int
-```
-
-La clase `Main` utiliza una instancia de `Mascota`, mientras que la clase `Mascota` es responsable de almacenar su información y administrar los controles de peso.
+* Crear el Scanner.
+* Pedir los datos de la mascota.
+* Crear el objeto Mascota.
+* Mostrar el menú de opciones.
+* Leer la opción que el usuario seleccione.
+* Llamar a los métodos de Mascota dependiendo de la opción seleccionada.
+* Repetir el menú hasta que el usuario quiera salir.
