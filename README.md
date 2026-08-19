@@ -27,40 +27,39 @@ El sistema se encarga de verificar que el peso sea mayor que 0, que no se regist
 
 # Clases
 
-## Clase `Mascota`
+## Clase Mascota
 
 ### Propósito
 
-La clase `Mascota` representa a la mascota que se encuentra actualmente bajo seguimiento en la clínica.
+La clase Mascota será la mascota que se encunetre en ese momento activa en la clínica
 
 Esta clase almacena la información básica de la mascota y administra sus controles de peso.
 
-### Atributos
+### Atributos de Masctoa
 
-#### `nombre`
+#### nombre
 
-* **Tipo:** `String`
-* **Visibilidad:** `private`
-* **Propósito:** Almacena el nombre de la mascota.
+- Tipo: string
+- Privado
+- Propósito: Almacena el nombre de la mascota.
 
-#### `especie`
+#### especie
 
-* **Tipo:** `String`
-* **Visibilidad:** `private`
-* **Propósito:** Almacena la especie de la mascota.
+- Tipo: enum
+- Privado
+- Propósito Almacena la especie de la mascota.
 
-#### `edad`
+#### edad
 
-* **Tipo:** `int`
-* **Visibilidad:** `private`
+- Tipo: float
+- Privado
 * **Propósito:** Almacena la edad de la mascota.
 
-#### `pesos`
+#### peso
 
-* **Tipo:** `double[]`
-* **Visibilidad:** `private`
-* **Propósito:** Arreglo utilizado para almacenar los pesos registrados durante los controles de la mascota.
-* **Tamaño máximo:** 10 posiciones.
+- Tipo: double[]
+- Privado
+- Proposito: almacenar el peso de las mascotas, con un máximo de 10 posiciones
 
 #### `cantidadControles`
 
